@@ -1,0 +1,75 @@
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="row">
+        <div class="col-2">
+          <div class="card-header">
+          <button (click)="onBack()" type="button" class="btn btn-icon primary" ><span [data-feather]="'arrow-left'"></span></button>
+          <h4 class="card-title">Add Product</h4>
+          </div>
+          </div>
+        <div class="col-10"></div>
+      </div>
+      
+      <div class="card-body pb-1">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <form [formGroup]="productForm" (submit)="submitProduit()">
+              <mat-form-field class="w-100">
+                <mat-label>Designation</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Designation"
+                  formControlName="designationControl"
+                  required
+                />
+                <mat-error *ngIf="productForm.controls['designationControl'].invalid">
+                  Designation champ requis
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <mat-label>Quantite</mat-label>
+                <input
+                  matInput
+                  placeholder="Quantite"
+                  type="number"
+                  formControlName="quantiteControl"
+                  required
+                />
+                <mat-error *ngIf="productForm.controls['quantiteControl'].invalid">
+                  Quantite champ requis
+                </mat-error>
+              </mat-form-field>
+      
+              <mat-form-field class="w-100">
+                <mat-label>Description</mat-label>
+                <textarea
+                  matInput
+                  placeholder="Description"
+                  formControlName="DescriptionControl"
+                ></textarea>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <mat-label>Prix</mat-label>
+                <input matInput placeholder="Prix" formControlName="PrixControl" />
+              </mat-form-field>
+              <button
+                class="w-100"
+                type="submit"
+                [disabled]="productForm.invalid"
+                mat-raised-button
+                color="accent"
+              >
+                Sauvegarder produit
+              </button>
+            </form>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
